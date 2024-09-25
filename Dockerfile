@@ -1,20 +1,23 @@
-# Use a Node base image with Playwright dependencies
-FROM mcr.microsoft.com/playwright:focal
+# Use an official Node.js runtime as a parent image
+FROM node:20
 
-# Set the working directory
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy all project files to the container
-COPY . .
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
 
-# Install dependencies
+# Install dependencies, including Playwright browsers
 RUN npm install
 
-# Ensure Playwright is installed
+# Copy the rest of your application code to the container
+COPY . .
+
+# Install Playwright browsers
 RUN npx playwright install
 
-# Expose the port the app runs on
-EXPOSE 3000
+# Expose the port your app runs on
+EXPOSE 5000
 
-# Start the app
+# Define the command to run your app
 CMD ["npm", "start"]
