@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "Server.js",
   "scripts": {
-    "build": "./render-build.sh && npm install", 
+    "postinstall": "npx playwright install",
     "start": "node Server.js"
   },
   "keywords": [],
