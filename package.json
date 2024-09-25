@@ -4,7 +4,8 @@
   "main": "Server.js",
   "scripts": {
     "postinstall": "npx playwright install",
-    "start": "node Server.js"
+    "start": "node Server.js",
+    "build": "render-build.sh" 
   },
   "keywords": [],
   "author": "",
